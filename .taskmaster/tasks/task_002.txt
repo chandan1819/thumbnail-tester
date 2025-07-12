@@ -1,0 +1,11 @@
+# Task ID: 2
+# Title: Implement Landing Page
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Implement the landing page with a clear value proposition and file upload area.
+# Details:
+Create a landing page component with a headline, subheadline, and an upload area. Implement drag & drop functionality using a library like `react-dropzone`. Implement file validation (JPG, PNG, dimensions, size) on the client-side. Use HTML5 File API for file handling. Upon successful upload, redirect to the Thumbnail Testing Screen.
+
+# Test Strategy:
+Test file upload with valid and invalid files (size, dimensions, format). Verify redirection after successful upload.

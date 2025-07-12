@@ -1,0 +1,11 @@
+# Task ID: 9
+# Title: Implement Light/Dark Mode Toggle
+# Status: pending
+# Dependencies: 3
+# Priority: medium
+# Description: Implement light/dark mode toggle.
+# Details:
+Add a UI switch to toggle between YouTube Light and Dark themes. Use CSS variables or a library like `styled-components` to manage themes. Ensure the themes accurately reflect YouTube's styles.
+
+# Test Strategy:
+Verify that the theme switch works correctly and that the themes accurately reflect YouTube's styles.

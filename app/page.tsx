@@ -1,103 +1,115 @@
-import Image from "next/image";
+"use client";
+
+import { useCallback, useState } from "react";
+import { useDropzone, FileError } from "react-dropzone";
+import { useThumbnailStore } from "./store";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const addThumbnails = useThumbnailStore((state) => state.addThumbnails);
+  const thumbnails = useThumbnailStore((state) => state.thumbnails);
+  const router = useRouter();
+  const [uploadErrors, setUploadErrors] = useState<string[]>([]);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    setUploadErrors([]); // Clear previous errors
+    const newFiles = acceptedFiles.filter(
+      (file) => !thumbnails.some((t) => t.file.name === file.name)
+    );
+
+    if (newFiles.length + thumbnails.length > 3) {
+      setUploadErrors(["You can upload a maximum of 3 thumbnails."]);
+      return;
+    }
+    
+    addThumbnails(newFiles);
+
+    if(newFiles.length > 0) {
+      router.push('/testing');
+    }
+
+  }, [addThumbnails, thumbnails, router]);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/jpeg": [],
+      "image/png": [],
+    },
+    onDropRejected: (fileRejections) => {
+      const newErrors = fileRejections.map(({ file, errors }) => {
+        const errorMessages = errors.map((e: FileError) => {
+          if (e.code === 'file-too-large') {
+            return `${file.name} is larger than 5MB`;
+          }
+          if (e.code === 'file-invalid-type') {
+            return `${file.name} is not a valid image type (JPG, PNG)`;
+          }
+          return e.message;
+        });
+        return errorMessages;
+      }).flat();
+      setUploadErrors(prev => [...prev, ...newErrors]);
+    },
+    maxSize: 5 * 1024 * 1024, // 5MB
+    maxFiles: 3,
+  });
+
+  const uploadedFileItems = thumbnails.map((thumbnail) => (
+    <li key={thumbnail.file.name}>
+      {thumbnail.file.name} - {(thumbnail.file.size / 1024).toFixed(2)} KB
+    </li>
+  ));
+
+
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-gray-50 dark:bg-gray-900">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-6xl">
+          Pick the Perfect Thumbnail
+        </h1>
+        <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          See your thumbnails in a real YouTube layout before you publish.
+        </p>
+      </div>
+
+      <div className="mt-10 w-full max-w-xl">
+        <div
+          {...getRootProps()}
+          className={`flex flex-col items-center justify-center rounded-lg border border-dashed border-gray-900/25 dark:border-gray-50/25 px-6 py-10 ${
+            isDragActive ? "bg-blue-100 dark:bg-blue-900/50" : ""
+          }`}
+        >
+          <input {...getInputProps()} />
+          <div className="text-center">
+            {isDragActive ? (
+              <p>Drop the files here ...</p>
+            ) : (
+              <p>Drag 'n' drop some files here, or click to select files</p>
+            )}
+            <div className="mt-4 flex text-sm leading-6 text-gray-600 dark:text-gray-400">
+              <p className="pl-1">Upload up to 3 thumbnails</p>
+            </div>
+            <p className="text-xs leading-5 text-gray-600 dark:text-gray-400">
+              PNG, JPG up to 5MB
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {uploadErrors.length > 0 && (
+          <div className="mt-4 text-red-500">
+            <h4 className="font-bold">Upload Errors:</h4>
+            <ul>
+              {uploadErrors.map((error, i) => <li key={i}>{error}</li>)}
+            </ul>
+          </div>
+        )}
+        {thumbnails.length > 0 && (
+          <aside className="mt-4">
+            <h4 className="text-lg font-semibold">Uploaded Files:</h4>
+            <ul>{uploadedFileItems}</ul>
+          </aside>
+        )}
+      </div>
+    </main>
   );
 }

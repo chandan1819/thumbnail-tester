@@ -1,0 +1,11 @@
+# Task ID: 8
+# Title: Implement View Simulation Toggles
+# Status: pending
+# Dependencies: 3
+# Priority: medium
+# Description: Implement view simulation toggles.
+# Details:
+Add toggle options to preview thumbnail placement in different YouTube views (Desktop, Search Results, Mobile, Video Sidebar). Update the UI based on the selected view.
+
+# Test Strategy:
+Verify that the UI updates correctly based on the selected view.

@@ -1,0 +1,101 @@
+# Product Requirements Document (PRD)
+
+## Product Name: `thumbnailtest`
+
+### Overview
+`thumbnailtest` is a web application tailored for YouTube content creators to visually test and compare multiple thumbnail options in a realistic YouTube-like UI. This helps users make informed decisions about which thumbnail performs or appears best.
+
+---
+
+## 1. Landing Page
+
+### Requirements:
+- **Clear Value Proposition**
+  - Short headline and subheadline explaining the tool's purpose (e.g., “Pick the Perfect Thumbnail” and “See your thumbnails in real YouTube layouts before you publish.”)
+  
+- **Upload Area**
+  - Supports drag & drop and file picker.
+  - Accepts JPG and PNG formats.
+  - Validates for:
+    - Dimensions: 1280 x 720 (minimum width 640px)
+    - Max file size: 5MB
+  - Uploading auto-navigates to Thumbnail Testing Screen.
+
+---
+
+## 2. Thumbnail Testing Screen
+
+### Layout:
+- Simulated YouTube UI with scrollable video feed.
+- Feeds show a mix of fixed dummy thumbnails and user-uploaded ones.
+- UI must support different YouTube views: 
+  - Desktop homepage
+  - Mobile feed
+  - Search results
+  - Video suggestions sidebar
+
+### Functional Requirements:
+
+#### 2.1 YouTube Preview Mimicry
+- Display 3 thumbnails per row.
+- Use realistic dummy data for videos (99 total), loaded locally.
+- Thumbnails must mimic real YouTube layout, including:
+  - Channel icon
+  - Video title
+  - Views and timestamp
+
+#### 2.2 Thumbnail Upload & Management
+- Users can upload up to **3 thumbnails**.
+- Uploaded thumbnails are integrated into the dummy feed:
+  - Appear earlier in the scroll (not all at the end)
+  - Can be randomly shuffled
+- Allow deleting individual thumbnails.
+
+#### 2.3 Thumbnail Placement
+- Users can:
+  - Shuffle the uploaded thumbnails randomly within the dummy feed.
+  - Re-shuffle as needed without re-upload.
+
+#### 2.4 Metadata Customization
+- For each uploaded thumbnail, allow user to optionally:
+  - Add a custom video title
+  - Set channel name
+  - Upload a channel profile picture
+
+#### 2.5 View Simulation
+- Toggle options to preview thumbnail placement in:
+  - YouTube Desktop feed
+  - YouTube Search Results
+  - YouTube Mobile feed
+  - YouTube Video Sidebar (suggested videos)
+
+#### 2.6 Light/Dark Mode Toggle
+- Provide UI switch to toggle between YouTube Light and Dark themes.
+- Themes should accurately reflect YouTube’s styles for both modes.
+
+---
+
+## Non-Functional Requirements
+
+- **Performance:** Local caching for dummy thumbnails to ensure fast load.
+- **Responsiveness:** Must work seamlessly across major screen sizes (desktop, tablet, mobile).
+- **Accessibility:** Basic ARIA tags for screen reader compatibility.
+- **Security:** Validate files on both frontend and backend to prevent malicious uploads.
+
+---
+
+## MVP Notes
+
+- No login or user account system in MVP.
+- No backend storage required beyond temporary upload.
+- All dummy thumbnails and data can be stored and fetched locally.
+
+---
+
+## Future Enhancements (Post-MVP)
+
+- A/B test comparison support (vote on which thumbnail looks better).
+- Analytics on where users focus (via heatmaps or time-on-thumbnail).
+- Option to save projects for registered users.
+
+---

@@ -1,0 +1,11 @@
+# Task ID: 10
+# Title: Implement Backend File Validation
+# Status: pending
+# Dependencies: 2, 5
+# Priority: high
+# Description: Implement backend file validation to prevent malicious uploads.
+# Details:
+Set up a simple backend endpoint (e.g., using Node.js with Express) to handle file uploads. Implement file validation (size, dimensions, format) on the server-side. Return an error if the file is invalid.
+
+# Test Strategy:
+Test file upload with valid and invalid files. Verify that the backend validation works correctly and returns an error for invalid files.

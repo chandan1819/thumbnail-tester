@@ -1,0 +1,11 @@
+# Task ID: 3
+# Title: Design Thumbnail Testing Screen Layout
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Create the Thumbnail Testing Screen layout with simulated YouTube UI.
+# Details:
+Design the layout to mimic YouTube's UI. Implement different views (Desktop, Mobile, Search Results, Video Sidebar) using CSS and responsive design techniques. Create placeholder components for the video feed and other UI elements.
+
+# Test Strategy:
+Verify the layout responsiveness across different screen sizes. Ensure the UI elements are correctly positioned and styled.

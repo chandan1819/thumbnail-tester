@@ -1,0 +1,491 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Initialize Project",
+        "description": "Set up the project with necessary tooling and folder structure.",
+        "details": "Initialize a new web project using a modern framework like React or Vue.js. Configure Webpack or Parcel for bundling. Set up basic folder structure (components, assets, styles).",
+        "testStrategy": "Verify the project setup by running the development server and ensuring no initial errors.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement Landing Page",
+        "description": "Implement the landing page with a clear value proposition and file upload area.",
+        "details": "Create a landing page component with a headline, subheadline, and an upload area. Implement drag & drop functionality using a library like `react-dropzone`. Implement file validation (JPG, PNG, dimensions, size) on the client-side. Use HTML5 File API for file handling. Upon successful upload, redirect to the Thumbnail Testing Screen.",
+        "testStrategy": "Test file upload with valid and invalid files (size, dimensions, format). Verify redirection after successful upload.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Landing Page Component Structure",
+            "description": "Set up the basic HTML structure for the landing page, including sections for the headline, subheadline, and file upload area.",
+            "dependencies": [],
+            "details": "Create a React component with placeholders for the headline, subheadline, and a div for the file upload area. Ensure basic styling is applied for layout.",
+            "status": "done",
+            "testStrategy": "Verify the component renders correctly with the expected placeholders and basic styling."
+          },
+          {
+            "id": 2,
+            "title": "Implement Drag and Drop File Upload",
+            "description": "Integrate react-dropzone to enable drag-and-drop functionality for file uploads.",
+            "dependencies": [
+              1
+            ],
+            "details": "Install react-dropzone. Implement the drag-and-drop functionality within the designated upload area. Handle file selection and display selected file names.",
+            "status": "done",
+            "testStrategy": "Test dragging and dropping files into the designated area. Verify that the files are correctly selected and their names are displayed."
+          },
+          {
+            "id": 3,
+            "title": "Implement Client-Side File Validation",
+            "description": "Implement client-side validation for uploaded files (JPG, PNG, dimensions, size).",
+            "dependencies": [
+              2
+            ],
+            "details": "Use JavaScript and the HTML5 File API to validate file types (JPG, PNG), dimensions (if required), and file size. Display appropriate error messages to the user if validation fails.",
+            "status": "done",
+            "testStrategy": "Test uploading files of invalid types, dimensions, and sizes. Verify that the correct error messages are displayed."
+          },
+          {
+            "id": 4,
+            "title": "Handle Successful File Upload",
+            "description": "Implement the logic to handle successful file uploads, including storing the file (temporarily) and preparing for redirection.",
+            "dependencies": [
+              3
+            ],
+            "details": "Store the uploaded file in a state variable or temporary storage. Prepare the necessary data (e.g., file path or ID) to be passed to the Thumbnail Testing Screen.",
+            "status": "done",
+            "testStrategy": "Upload a valid file and verify that it is stored correctly and the necessary data is prepared for redirection."
+          },
+          {
+            "id": 5,
+            "title": "Implement Redirection to Thumbnail Testing Screen",
+            "description": "Implement the redirection to the Thumbnail Testing Screen upon successful file upload.",
+            "dependencies": [
+              4
+            ],
+            "details": "Use React Router or similar to redirect the user to the Thumbnail Testing Screen after a successful file upload. Pass the necessary data (e.g., file path or ID) as route parameters or query parameters.",
+            "status": "done",
+            "testStrategy": "Upload a valid file and verify that the user is redirected to the Thumbnail Testing Screen with the correct data passed as parameters."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Design Thumbnail Testing Screen Layout",
+        "description": "Create the Thumbnail Testing Screen layout with simulated YouTube UI.",
+        "details": "Design the layout to mimic YouTube's UI. Implement different views (Desktop, Mobile, Search Results, Video Sidebar) using CSS and responsive design techniques. Create placeholder components for the video feed and other UI elements.",
+        "testStrategy": "Verify the layout responsiveness across different screen sizes. Ensure the UI elements are correctly positioned and styled.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Research YouTube UI Components and Layouts",
+            "description": "Analyze YouTube's UI across different views (Desktop, Mobile, Search Results, Video Sidebar) to identify key components, layout structures, and responsive design patterns.",
+            "dependencies": [],
+            "details": "Focus on identifying common elements like video thumbnails, titles, channel information, view counts, and related video sections. Document the CSS styles and responsive behaviors used for each view.",
+            "status": "done",
+            "testStrategy": "Compare the collected information with actual YouTube pages to ensure accuracy."
+          },
+          {
+            "id": 2,
+            "title": "Design Desktop View Layout",
+            "description": "Create the HTML structure and CSS styles for the Desktop view of the Thumbnail Testing Screen, mimicking YouTube's desktop UI.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement the main video feed area, sidebar, header, and footer sections. Use placeholder components for video thumbnails, titles, and channel information. Ensure the layout is flexible and adapts to different screen sizes.",
+            "status": "done",
+            "testStrategy": "Verify the layout renders correctly on different desktop screen resolutions and browsers. Check for responsiveness when resizing the browser window."
+          },
+          {
+            "id": 3,
+            "title": "Design Mobile View Layout",
+            "description": "Create the HTML structure and CSS styles for the Mobile view of the Thumbnail Testing Screen, mimicking YouTube's mobile UI.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement the mobile-specific navigation, video feed, and bottom bar. Use media queries to adapt the layout for smaller screens. Ensure touch-friendly interactions and optimized performance.",
+            "status": "done",
+            "testStrategy": "Test the layout on different mobile devices and emulators. Verify responsiveness and touch interactions."
+          },
+          {
+            "id": 4,
+            "title": "Design Search Results and Video Sidebar Views",
+            "description": "Create the HTML structure and CSS styles for the Search Results and Video Sidebar views, mimicking YouTube's UI for these sections.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement the layout for displaying search results with thumbnails, titles, and channel information. Design the video sidebar with related videos and recommendations. Ensure consistency with the overall YouTube UI style.",
+            "status": "done",
+            "testStrategy": "Verify the layouts render correctly and display the expected information. Check for responsiveness and consistency with other views."
+          },
+          {
+            "id": 5,
+            "title": "Implement Responsive Design and CSS Styling",
+            "description": "Refine the CSS styles and responsive design techniques to ensure the Thumbnail Testing Screen layout adapts seamlessly to different screen sizes and devices.",
+            "dependencies": [
+              2,
+              3,
+              4
+            ],
+            "details": "Use media queries, flexible grids, and responsive images to create a fluid and adaptable layout. Optimize CSS for performance and maintainability. Ensure cross-browser compatibility.",
+            "status": "done",
+            "testStrategy": "Test the layout on a wide range of devices and browsers. Use browser developer tools to inspect CSS styles and identify any responsiveness issues."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Implement Dummy Video Feed",
+        "description": "Load and display dummy video data with thumbnails.",
+        "details": "Create a JSON file containing dummy video data (channel icon, video title, views, timestamp, thumbnail URLs). Load this data and render it in the video feed. Use local caching to improve performance. Display 3 thumbnails per row.",
+        "testStrategy": "Verify that the dummy video data is loaded correctly and displayed in the video feed. Check the performance of the feed with local caching enabled.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Implement Thumbnail Upload and Management",
+        "description": "Implement thumbnail upload and management functionality.",
+        "details": "Allow users to upload up to 3 thumbnails. Integrate uploaded thumbnails into the dummy feed. Implement thumbnail deletion functionality. Ensure uploaded thumbnails appear earlier in the scroll.",
+        "testStrategy": "Test thumbnail upload, integration into the feed, and deletion. Verify the limit of 3 thumbnails.",
+        "priority": "high",
+        "dependencies": [
+          2,
+          4
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Thumbnail Upload Functionality",
+            "description": "Develop the functionality for users to upload thumbnails, limiting the number of uploads to a maximum of 3.",
+            "dependencies": [],
+            "details": "Implement a file upload component that allows users to select and upload image files. Validate file types and sizes. Store uploaded thumbnails in a designated storage location.",
+            "status": "done",
+            "testStrategy": "Unit test the upload component with different file types and sizes. Integration test to verify successful storage of uploaded thumbnails."
+          },
+          {
+            "id": 2,
+            "title": "Integrate Thumbnails into Dummy Feed",
+            "description": "Modify the dummy feed to display the uploaded thumbnails for each feed item.",
+            "dependencies": [
+              1
+            ],
+            "details": "Update the feed rendering logic to fetch and display the uploaded thumbnails associated with each feed item. Ensure proper scaling and display of thumbnails within the feed layout.",
+            "status": "done",
+            "testStrategy": "Manually verify that uploaded thumbnails are correctly displayed in the dummy feed for various feed items."
+          },
+          {
+            "id": 3,
+            "title": "Implement Thumbnail Deletion Functionality",
+            "description": "Develop the functionality for users to delete uploaded thumbnails.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Implement a delete button or similar UI element for each thumbnail. Upon clicking the delete button, remove the thumbnail from storage and update the feed accordingly.",
+            "status": "done",
+            "testStrategy": "Unit test the deletion logic. Integration test to verify that deleting a thumbnail removes it from storage and updates the feed display."
+          },
+          {
+            "id": 4,
+            "title": "Prioritize Uploaded Thumbnails in Scroll",
+            "description": "Modify the feed display logic to ensure that feed items with uploaded thumbnails appear earlier in the scroll.",
+            "dependencies": [
+              2
+            ],
+            "details": "Adjust the feed sorting or filtering mechanism to prioritize feed items that have associated uploaded thumbnails. This could involve modifying the query or data structure used to populate the feed.",
+            "status": "done",
+            "testStrategy": "Manually verify that feed items with uploaded thumbnails appear earlier in the scroll compared to items without thumbnails."
+          },
+          {
+            "id": 5,
+            "title": "User Interface and Experience Refinement",
+            "description": "Refine the user interface and overall user experience for thumbnail upload and management.",
+            "dependencies": [
+              1,
+              3
+            ],
+            "details": "Improve the visual design of the upload component, deletion buttons, and thumbnail display. Provide clear feedback to the user during upload and deletion processes. Ensure responsiveness across different devices.",
+            "status": "done",
+            "testStrategy": "Conduct user testing to gather feedback on the usability and overall experience of the thumbnail upload and management functionality. Address any identified issues or areas for improvement."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Implement Thumbnail Shuffling",
+        "description": "Implement thumbnail shuffling functionality.",
+        "details": "Add a button to shuffle the uploaded thumbnails randomly within the dummy feed. Ensure the shuffling does not require re-uploading.",
+        "testStrategy": "Verify that the thumbnails are shuffled correctly and that the shuffling does not require re-uploading.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Add Shuffle Button to UI",
+            "description": "Add a button to the UI that will trigger the thumbnail shuffle functionality.",
+            "dependencies": [],
+            "details": "1. Locate the appropriate component in the UI where the shuffle button should be placed (e.g., near the thumbnail display or upload area).\n2. Add a button element (e.g., `<button>`) with the text \"Shuffle Thumbnails\".\n3. Assign a unique ID or class to the button for easy selection in subsequent tasks (e.g., `id=\"shuffle-button\"`).\n4. Implement basic styling for the button to match the existing UI theme.\n5. Add an `onClick` handler to the button that currently does nothing (e.g., `onClick={() => {}}`). This will be connected to the shuffle logic later.",
+            "status": "done",
+            "testStrategy": "Verify that the button is rendered correctly in the UI and that it is clickable. Check that the button's styling is consistent with the rest of the application."
+          },
+          {
+            "id": 2,
+            "title": "Implement Thumbnail Shuffle Logic in Zustand Store",
+            "description": "Implement the logic to shuffle the array of uploaded thumbnails within the Zustand store.",
+            "dependencies": [],
+            "details": "1. Locate the Zustand store file that manages the thumbnail data.\n2. Add a new action to the store called `shuffleThumbnails`.\n3. Inside the `shuffleThumbnails` action, retrieve the current array of uploaded thumbnails from the store's state.\n4. Implement a shuffling algorithm (e.g., Fisher-Yates shuffle) to randomly reorder the elements of the thumbnail array.  Ensure the shuffle algorithm operates in place or creates a new shuffled array.\n5. Update the store's state with the shuffled array of thumbnails using the `set` method provided by Zustand.",
+            "status": "done",
+            "testStrategy": "Write unit tests for the `shuffleThumbnails` action. Verify that the action shuffles the thumbnail array correctly and updates the store's state. Ensure that the original array is not mutated if a new array is created during shuffling. Test with different array sizes, including empty and single-element arrays."
+          },
+          {
+            "id": 3,
+            "title": "Connect Shuffle Button to Zustand Action",
+            "description": "Connect the shuffle button's `onClick` event to the `shuffleThumbnails` action in the Zustand store.",
+            "dependencies": [],
+            "details": "1. Import the Zustand store and the `shuffleThumbnails` action into the component where the shuffle button is located.\n2. In the button's `onClick` handler, call the `shuffleThumbnails` action from the Zustand store.\n3. Ensure that the component re-renders when the thumbnail array in the Zustand store changes. This might involve using the `useStore` hook from Zustand to subscribe to the thumbnail array.",
+            "status": "done",
+            "testStrategy": "Click the shuffle button and verify that the order of thumbnails in the UI changes randomly. Check that the UI updates automatically after the shuffle action is triggered. Use the browser's developer tools to inspect the Zustand store and confirm that the thumbnail array is being updated correctly."
+          },
+          {
+            "id": 4,
+            "title": "Ensure Shuffle Only Affects User-Uploaded Thumbnails",
+            "description": "Modify the shuffle logic to only shuffle user-uploaded thumbnails, leaving any default or pre-existing thumbnails in their original positions.",
+            "dependencies": [],
+            "details": "1. Within the `shuffleThumbnails` action in the Zustand store, identify a way to distinguish user-uploaded thumbnails from other thumbnails (e.g., by checking a flag or property on each thumbnail object).\n2. Modify the shuffling algorithm to only shuffle the user-uploaded thumbnails, leaving the other thumbnails untouched. This might involve creating two separate arrays (one for user-uploaded thumbnails and one for other thumbnails), shuffling the user-uploaded thumbnails, and then concatenating the two arrays back together.\n3. Update the store's state with the modified thumbnail array.",
+            "status": "done",
+            "testStrategy": "Add a mix of user-uploaded and default thumbnails. Click the shuffle button and verify that only the user-uploaded thumbnails are shuffled, while the default thumbnails remain in their original positions. Write unit tests to specifically test this scenario."
+          },
+          {
+            "id": 5,
+            "title": "UI/UX Refinement and Error Handling",
+            "description": "Refine the UI/UX of the shuffle functionality and add basic error handling.",
+            "dependencies": [],
+            "details": "1. Add a visual indicator (e.g., a loading spinner) while the thumbnails are being shuffled to provide feedback to the user.\n2. Implement basic error handling to catch any exceptions that might occur during the shuffling process (e.g., if the thumbnail array is unexpectedly empty). Display an appropriate error message to the user.\n3. Consider adding a confirmation dialog before shuffling the thumbnails to prevent accidental shuffling.\n4. Review the overall UI/UX of the shuffle functionality and make any necessary adjustments to improve the user experience.",
+            "status": "done",
+            "testStrategy": "Test the shuffle functionality under various conditions, including empty thumbnail arrays and large thumbnail arrays. Verify that the loading indicator is displayed correctly and that error messages are displayed appropriately. Conduct user testing to gather feedback on the UI/UX of the shuffle functionality."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Implement Metadata Customization",
+        "description": "Implement metadata customization for uploaded thumbnails.",
+        "details": "Add input fields for custom video title, channel name, and channel profile picture. Update the displayed metadata based on user input.",
+        "testStrategy": "Verify that the metadata is updated correctly based on user input.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Extend Zustand Store for Thumbnail Metadata",
+            "description": "Modify the Zustand store to include fields for storing custom metadata for each uploaded thumbnail. The metadata should include 'videoTitle' and 'channelName'.",
+            "dependencies": [],
+            "details": "Modify the Zustand store slice responsible for managing thumbnails. Add fields 'videoTitle' and 'channelName' to the thumbnail object within the store. Ensure the store update functions can handle these new fields.",
+            "status": "done",
+            "testStrategy": "Write unit tests to verify that the Zustand store correctly initializes and updates the 'videoTitle' and 'channelName' fields for each thumbnail."
+          },
+          {
+            "id": 2,
+            "title": "Implement Input Fields for Metadata Customization in VideoCard",
+            "description": "Add input fields to the VideoCard component to allow users to input custom video title and channel name for each thumbnail.",
+            "dependencies": [],
+            "details": "Within the VideoCard component, add two text input fields: one for 'videoTitle' and one for 'channelName'. These input fields should be placed in a suitable location within the VideoCard layout. Use appropriate labels and styling for these fields.",
+            "status": "done",
+            "testStrategy": "Manually test the VideoCard component to ensure that the input fields are displayed correctly and that users can enter text into them."
+          },
+          {
+            "id": 3,
+            "title": "Connect Input Fields to Zustand Store",
+            "description": "Connect the input fields in the VideoCard component to the Zustand store. When the user types in the input fields, the corresponding metadata in the store should be updated for the specific thumbnail.",
+            "dependencies": [],
+            "details": "Use the `onChange` event handler for the input fields to dispatch actions to the Zustand store. These actions should update the 'videoTitle' and 'channelName' fields for the corresponding thumbnail. Pass the thumbnail ID to the update action to ensure the correct thumbnail's metadata is updated.",
+            "status": "done",
+            "testStrategy": "Write integration tests to verify that changes in the input fields in the VideoCard component correctly update the Zustand store. Verify that the correct thumbnail's metadata is updated."
+          },
+          {
+            "id": 4,
+            "title": "Display Custom Metadata in VideoCard",
+            "description": "Modify the VideoCard component to display the custom metadata (video title and channel name) stored in the Zustand store.",
+            "dependencies": [],
+            "details": "Update the VideoCard component to fetch the 'videoTitle' and 'channelName' from the Zustand store for the current thumbnail. Display these values in the appropriate locations within the VideoCard layout, replacing any placeholder or default values.",
+            "status": "done",
+            "testStrategy": "Manually test the VideoCard component to ensure that the custom metadata is displayed correctly. Verify that the displayed metadata matches the values entered in the input fields."
+          },
+          {
+            "id": 5,
+            "title": "Implement Channel Profile Picture Customization",
+            "description": "Add functionality to allow users to upload and display a custom channel profile picture for each thumbnail.",
+            "dependencies": [],
+            "details": "Add an image upload field to the VideoCard component. When a user uploads an image, store the image data (e.g., as a base64 encoded string) in the Zustand store, associated with the thumbnail. Update the VideoCard to display this custom profile picture. Update the Zustand store to include a 'channelProfilePicture' field.",
+            "status": "done",
+            "testStrategy": "Test the image upload functionality. Verify that the image is correctly stored in the Zustand store and displayed in the VideoCard component. Test with different image formats and sizes."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Implement View Simulation Toggles",
+        "description": "Implement view simulation toggles.",
+        "details": "Add toggle options to preview thumbnail placement in different YouTube views (Desktop, Search Results, Mobile, Video Sidebar). Update the UI based on the selected view.",
+        "testStrategy": "Verify that the UI updates correctly based on the selected view.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Implement Light/Dark Mode Toggle",
+        "description": "Implement light/dark mode toggle.",
+        "details": "Add a UI switch to toggle between YouTube Light and Dark themes. Use CSS variables or a library like `styled-components` to manage themes. Ensure the themes accurately reflect YouTube's styles.",
+        "testStrategy": "Verify that the theme switch works correctly and that the themes accurately reflect YouTube's styles.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Install next-themes",
+            "description": "Install the `next-themes` package to provide theme switching functionality.",
+            "dependencies": [],
+            "details": "Run `npm install next-themes` or `yarn add next-themes` to install the package. Verify the installation by checking the `package.json` file.",
+            "status": "done",
+            "testStrategy": "Check that the package is listed in `package.json` and that `node_modules` contains the `next-themes` directory."
+          },
+          {
+            "id": 2,
+            "title": "Wrap application with ThemeProvider",
+            "description": "Wrap the Next.js application with the `ThemeProvider` component from `next-themes` in `_app.js` or `_app.tsx`.",
+            "dependencies": [],
+            "details": "Import `ThemeProvider` from `next-themes` and wrap the `<Component {...pageProps} />` within the `return` statement of your `_app.js` or `_app.tsx` file. Example: `import { ThemeProvider } from 'next-themes';\n\nfunction MyApp({ Component, pageProps }) {\n  return (\n    <ThemeProvider attribute=\"class\">\n      <Component {...pageProps} />\n    </ThemeProvider>\n  );\n}\n\nexport default MyApp;`",
+            "status": "done",
+            "testStrategy": "Inspect the rendered HTML to confirm that the `<html>` tag has the `class` attribute. Verify that the theme context is available in the application."
+          },
+          {
+            "id": 3,
+            "title": "Create Theme Switcher Component",
+            "description": "Create a new component (e.g., `ThemeSwitcher.js` or `ThemeSwitcher.tsx`) that renders a button or switch to toggle between light and dark themes.",
+            "dependencies": [],
+            "details": "Use the `useTheme` hook from `next-themes` to get the current theme and the `setTheme` function. Implement a button or switch that calls `setTheme` with either 'light' or 'dark' when clicked/toggled. Example: `import { useTheme } from 'next-themes';\n\nfunction ThemeSwitcher() {\n  const { theme, setTheme } = useTheme();\n\n  return (\n    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Toggle Theme</button>\n  );\n}\n\nexport default ThemeSwitcher;`",
+            "status": "done",
+            "testStrategy": "Manually test the theme switcher by clicking the button and verifying that the theme changes. Use browser developer tools to inspect the `<html>` tag's `class` attribute and confirm it updates between 'light' and 'dark'."
+          },
+          {
+            "id": 4,
+            "title": "Add Theme Switcher to Layout",
+            "description": "Import and render the `ThemeSwitcher` component in the application's layout (e.g., in a header or navigation bar).",
+            "dependencies": [],
+            "details": "Import the `ThemeSwitcher` component into your layout component (e.g., `components/Layout.js` or `components/Layout.tsx`). Render the `ThemeSwitcher` component within the layout's JSX structure. Example: `import ThemeSwitcher from './ThemeSwitcher';\n\nfunction Layout({ children }) {\n  return (\n    <div>\n      <header>\n        <ThemeSwitcher />\n      </header>\n      <main>{children}</main>\n    </div>\n  );\n}\n\nexport default Layout;`",
+            "status": "done",
+            "testStrategy": "Verify that the theme switcher is visible in the application's layout. Click the theme switcher and confirm that the theme changes as expected."
+          },
+          {
+            "id": 5,
+            "title": "Configure Tailwind CSS for Class-Based Dark Mode",
+            "description": "Update the `tailwind.config.js` file to use the `class` strategy for dark mode.",
+            "dependencies": [],
+            "details": "Open `tailwind.config.js` and modify the `darkMode` property to `'class'`. Example: `module.exports = {\n  darkMode: 'class',\n  // ...rest of your config\n}`. Ensure that your CSS styles are defined to respond to the `dark` class on the `<html>` element or any parent element.",
+            "status": "done",
+            "testStrategy": "Inspect the rendered HTML and CSS to confirm that dark mode styles are applied when the `dark` class is present on the `<html>` element. Verify that light mode styles are applied when the `dark` class is absent."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Implement Backend File Validation",
+        "description": "Implement backend file validation to prevent malicious uploads.",
+        "details": "Set up a simple backend endpoint (e.g., using Node.js with Express) to handle file uploads. Implement file validation (size, dimensions, format) on the server-side. Return an error if the file is invalid.",
+        "testStrategy": "Test file upload with valid and invalid files. Verify that the backend validation works correctly and returns an error for invalid files.",
+        "priority": "high",
+        "dependencies": [
+          2,
+          5
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Next.js API Route for File Upload",
+            "description": "Set up a new API route in the `pages/api` directory to handle file uploads. This route will be the entry point for receiving file uploads from the frontend.",
+            "dependencies": [],
+            "details": "Create a new file, e.g., `pages/api/upload.js`.  Configure the API route to disable body parsing by default (using `config.api.bodyParser = false;`) to handle the multipart/form-data.  Implement a basic handler function that logs a message to the console.",
+            "status": "done",
+            "testStrategy": "Manually test the route by sending a request to the endpoint (e.g., using Postman or `curl`) and verifying that the console log message appears."
+          },
+          {
+            "id": 2,
+            "title": "Implement File Upload Handling with 'formidable'",
+            "description": "Use the 'formidable' library to parse the incoming multipart/form-data request and extract the uploaded file.",
+            "dependencies": [],
+            "details": "Install the 'formidable' library (`npm install formidable`). Import 'formidable' in `pages/api/upload.js`. Create a new `formidable.IncomingForm()` instance. Use `form.parse(req, (err, fields, files) => { ... })` to parse the request. Handle potential errors during parsing. Extract the uploaded file from the `files` object.",
+            "status": "done",
+            "testStrategy": "Upload a file using Postman or `curl`. Verify that the `files` object in the `form.parse` callback contains the uploaded file information (e.g., file path, file name, file size)."
+          },
+          {
+            "id": 3,
+            "title": "Implement File Type and Size Validation",
+            "description": "Validate the uploaded file's type (MIME type) and size to ensure it meets the allowed criteria.",
+            "dependencies": [],
+            "details": "Access the file's MIME type and size from the file object obtained in the previous step. Define allowed MIME types (e.g., 'image/jpeg', 'image/png') and a maximum file size (e.g., 5MB). Compare the uploaded file's MIME type and size against these criteria. If the file is invalid, return an appropriate error message.",
+            "status": "done",
+            "testStrategy": "Upload files with different MIME types (e.g., a text file) and sizes (e.g., a file larger than the maximum allowed size). Verify that the validation logic correctly identifies invalid files and returns the expected error messages."
+          },
+          {
+            "id": 4,
+            "title": "Implement Dimension Validation for Images",
+            "description": "If the file is an image, validate its dimensions (width and height) to ensure it meets the allowed criteria.",
+            "dependencies": [],
+            "details": "Install the 'image-size' library (`npm install image-size`). Import 'image-size' in `pages/api/upload.js`. Use `imageSize(file.filepath)` to get the dimensions of the image. Define allowed width and height. Compare the uploaded file's dimensions against these criteria. If the file is invalid, return an appropriate error message.",
+            "status": "done",
+            "testStrategy": "Upload images with different dimensions (e.g., very small, very large). Verify that the validation logic correctly identifies invalid images and returns the expected error messages."
+          },
+          {
+            "id": 5,
+            "title": "Return JSON Response with Validation Results",
+            "description": "Return a JSON response indicating whether the file upload was successful or if any validation errors occurred. Include appropriate status codes and error messages.",
+            "dependencies": [],
+            "details": "If the file is valid, return a JSON response with a success message and a 200 status code. If the file is invalid, return a JSON response with an error message and a 400 status code. Include details about the validation errors in the error message. Use `res.status(statusCode).json({ message: '...' })` to send the JSON response.",
+            "status": "done",
+            "testStrategy": "Upload both valid and invalid files. Verify that the API route returns the correct JSON response with the appropriate status code and message for each case."
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-12T11:30:39.044Z",
+      "updated": "2025-07-12T12:22:57.761Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

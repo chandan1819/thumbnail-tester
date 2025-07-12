@@ -1,0 +1,11 @@
+# Task ID: 5
+# Title: Implement Thumbnail Upload and Management
+# Status: pending
+# Dependencies: 2, 4
+# Priority: high
+# Description: Implement thumbnail upload and management functionality.
+# Details:
+Allow users to upload up to 3 thumbnails. Integrate uploaded thumbnails into the dummy feed. Implement thumbnail deletion functionality. Ensure uploaded thumbnails appear earlier in the scroll.
+
+# Test Strategy:
+Test thumbnail upload, integration into the feed, and deletion. Verify the limit of 3 thumbnails.

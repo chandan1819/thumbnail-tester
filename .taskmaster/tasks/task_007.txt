@@ -1,0 +1,11 @@
+# Task ID: 7
+# Title: Implement Metadata Customization
+# Status: pending
+# Dependencies: 5
+# Priority: medium
+# Description: Implement metadata customization for uploaded thumbnails.
+# Details:
+Add input fields for custom video title, channel name, and channel profile picture. Update the displayed metadata based on user input.
+
+# Test Strategy:
+Verify that the metadata is updated correctly based on user input.
